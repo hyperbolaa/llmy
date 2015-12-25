@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> 楼兰蜜语 </title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    {% block global_css %}
+        <!-- jquery-ui 1.10.4 -->
+        <link href="{{ asset('plugins/jQueryUI/jquery-ui.css') }}" rel="stylesheet" type="text/css" />
+        <!-- Bootstrap 3.3.4 -->
+        <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+        <!-- FontAwesome 4.3.0 -->
+        <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
+        <!-- Ionicons 2.0.0 -->
+        <link href="{{ asset('css/ionicons.min.css') }}" rel="stylesheet" type="text/css" />
+        <!-- Date Picker -->
+        <link href="{{ asset('plugins/datepicker/datepicker3.css') }}" rel="stylesheet" type="text/css" />
+        <!-- Datetime Picker -->
+        <link href="{{ asset('plugins/datetimepicker/bootstrap-datetimepicker.css') }}" rel="stylesheet" type="text/css" />
+        <!-- Daterange picker -->
+        <link href="{{ asset('plugins/daterangepicker/daterangepicker-bs3.css') }}" rel="stylesheet" type="text/css" />
+        <!-- iCheck -->
+        <link href="{{ asset('plugins/iCheck/flat/blue.css') }}" rel="stylesheet" type="text/css" />
+
+        <!-- Theme style && AdminLTE Skins -->
+        {% stylesheets '@ShopAdminBundle/Resources/public/css/AdminLTE.css'
+                        '@ShopAdminBundle/Resources/public/css/skins/_all-skins.min.css'
+                        '@ShopAdminBundle/Resources/public/css/select2.min.css'
+                        filter='cssrewrite'%}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    {% endblock %}
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="{{ asset('js/html5shiv.min.js') }}"></script>
+    <script src="{{ asset('js/respond.min.js') }}"></script>
+    <![endif]-->
+
+    {% block plugin_css %}
+    {% endblock %}
+</head>
+<body class="skin-blue sidebar-mini">
+<div class="wrapper">
+    <!--header-->
+    {% block header %}
+        {% include 'ShopAdminBundle::header.html.twig' %}
+    {% endblock %}
+    <!--header-->
+    <!-- Left side column. contains the logo and sidebar -->
+    {% block sidebar %}
+        {%  include 'ShopAdminBundle::sidebar.html.twig' %}
+    {% endblock %}
+    <!--left-->
+    <!-- Content Wrapper -->
+    {% block content %}
+        <div class="content-wrapper">
+            <!-- Page header -->
+            <section class="content-header">
+                <ol class="breadcrumb">
+                    <li><a><i class="fa fa-circle"></i> {{ _bundle|default("Admin") }} </a> </li>
+                    <li> {{ _module|default("Dashboard") }} </li>
+                    <li> {{ _current|default("index") }} </li>
+                </ol>
+            </section>
+            <!--/page header-->
+            <!--content-->
+            <section class="content">
+                {% block main_notice %}
+                    {#栏目的说明文档#}
+                {% endblock %}
+                {% block main_search %}
+                    {#栏目的搜索栏目#}
+                {% endblock %}
+                <!-- Main row -->
+                {% block main_content %}
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12">
+                            {% block main_body %}
+                            {% endblock %}
+                        </div>
+                    </div>
+                {% endblock %}
+                <!-- /main row -->
+            </section>
+            <!-- /.content -->
+        </div>
+    {% endblock %}
+    <!-- /Content-wrapper -->
+</div>
+
+{% block global_js %}
+    <!-- jQuery 2.1.4 -->
+    <script src="{{ asset('plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
+    <!-- Bootstrap 3.3.2 JS -->
+    <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="{{ asset('plugins/jQueryUI/jquery-ui.min.js') }}"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
+    <!-- datepicker -->
+    <script src="{{ asset('plugins/datepicker/bootstrap-datepicker.js') }}"></script>
+    <!-- daterangepicker -->
+    <script src="{{ asset('plugins/daterangepicker/moment.min.js') }}"></script>
+    <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
+    <!-- datetimepicker -->
+    <script src="{{ asset('plugins/datetimepicker/bootstrap-datetimepicker.js') }}"></script>
+
+    {% javascripts
+        '@ShopAdminBundle/Resources/public/js/app.js'
+        '@ShopAdminBundle/Resources/public/js/select2.min.js'
+        '@ShopAdminBundle/Resources/public/js/footer.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script>
+        //自动识别样式
+        (function(){
+            var hf = window.location.href;
+            var current_module = hf.match(/\/admin\/(\w+)\/?([^\?]*)/);
+            if(current_module && current_module[1]){
+                var mm = current_module[0].replace(/(^\s*)|(\s*$)/g, "");
+                $('li.treeview').each(function () {
+                    var menu = $(this).find('.treeview-menu li');
+                    menu.each(function(){
+                        var ss = $(this).find('a').attr('href');
+                        if(ss == mm){
+                            $(this).addClass('active');
+                        }
+                    });
+                });
+            }
+        })();
+    </script>
+{% endblock %}
+
+{% block plugin_js %}
+{% endblock %}
+
+{% block plugin_html %}
+{% endblock %}
+
+{% block plugin_tongji %}
+{% endblock %}
+
+</body>
+</html>

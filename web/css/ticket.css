@@ -1,0 +1,61 @@
+@charset "utf-8";
+/* CSS Document */
+
+.buy-count {
+	width: 30px;
+}
+.buy-txt {
+	margin:4px 0;
+	width: 30px;
+    height: 22px;
+    line-height: 22px;
+    border: 1px solid #ff7f01;
+    text-align: center;
+    background-color: #f7f7f7;
+    font-size: 1.07142857rem;
+    color: #444;
+}
+.thumb-active{border-bottom: 1px solid #eee;}
+.title{
+	font-size:15px;
+	margin-top:4px;
+	}
+.info-txt{background: url(../images/icon_dot.png) left no-repeat;
+padding-left: 24px;
+font-size:12px;
+line-height:26px;
+}
+.info{padding-bottom:5px;}
+.panel-default{
+	border-bottom: 1px solid #eee;
+	}
+	.sucbar{
+	width: 100%;
+    padding: 5px 0;
+    background: #fff;
+    border-top: 1px solid #e1e1e1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 60px;
+	}
+	.enter {
+	position: absolute;
+	margin-left: 15%;
+	margin-right: 15%;
+	bottom: 10px;
+	width: 70%;
+	height: 35px;
+	line-height: 30px;
+	text-align: center;
+	background-color: #FF632B;
+	color: #FFF;
+	font-size: 15px;
+	right: 0;
+	border-radius: 8px;
+	font-weight: normal;
+}

@@ -1,0 +1,63 @@
+{% extends "ShopAdminBundle::base.html.twig" %}
+
+{% if edit_form is defined %}
+    {% set form=edit_form %}
+{% endif %}
+{% set form_name   = form.vars.name %}
+{% set form_method = form.vars.method %}
+{% set form_action = form.vars.action %}
+
+{#form 表单可以一次性渲染, 但是为了美观,我们需要单独渲染#}
+
+{% block main_body %}
+    <div class="box box-info form_wrap">
+
+        <form name="{{ form_name }}" method="{{ form_method }}" action="{{ form_action }}"
+              class="form-horizontal"  enctype="multipart/form-data">
+            <div class="box-body">
+                {#字段渲染#}
+                {% block form_groups %}
+                {% endblock %}
+                {#渲染密钥#}
+                {{ form_widget(form._token) }}
+            </div>
+            <div class="box-footer">
+                <label class="col-sm-2 control-label"></label>
+                <button type="button" class="btn btn-success " style="width: 120px;" id="btn_submit_form">确认</button>
+            </div>
+        </form>
+
+    </div>
+{% endblock %}
+
+
+
+{% block global_css %}
+    <!-- jquery-ui 1.10.4 -->
+    <link href="{{ asset('plugins/jQueryUI/jquery-ui.css') }}" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap 3.3.4 -->
+    <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- FontAwesome 4.3.0 -->
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- Ionicons 2.0.0 -->
+    <link href="{{ asset('css/ionicons.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- Date Picker -->
+    <link href="{{ asset('plugins/datepicker/datepicker3.css') }}" rel="stylesheet" type="text/css" />
+    <!-- Datetime Picker -->
+    <link href="{{ asset('plugins/datetimepicker/bootstrap-datetimepicker.css') }}" rel="stylesheet" type="text/css" />
+    <!-- Daterange picker -->
+    <link href="{{ asset('plugins/daterangepicker/daterangepicker-bs3.css') }}" rel="stylesheet" type="text/css" />
+    <!-- iCheck -->
+    <link href="{{ asset('plugins/iCheck/flat/blue.css') }}" rel="stylesheet" type="text/css" />
+
+    <!-- Theme style && AdminLTE Skins -->
+    {% stylesheets '@ShopAdminBundle/Resources/public/css/AdminLTE.css'
+    '@ShopAdminBundle/Resources/public/css/skins/_all-skins.min.css'
+    '@ShopAdminBundle/Resources/public/css/select2.min.css'
+    filter='cssrewrite'%}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+
+

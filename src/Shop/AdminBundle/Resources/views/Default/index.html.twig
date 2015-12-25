@@ -1,0 +1,16 @@
+{% extends 'ShopAdminBundle::base_index.html.twig' %}
+
+{% set _bundle,_module,_current='后台','管理','index' %}
+{% set thead=['#','标题','链接','操作'] %}
+
+{% block tbody %}
+    <td> {{ entity['a'] }} </td>
+    <td> {{ entity['b'] }} </td>
+    <td> {{ entity['c'] }} </td>
+    <td> {{ entity['d'] }} </td>
+{% endblock %}
+
+
+
+
+

@@ -1,0 +1,56 @@
+* {padding:0;margin:0;}
+#container{
+    width:600px;
+    min-height: 100%;
+    height:auto;
+    margin-left:auto;
+    margin-right:auto;
+    background: #eee;
+}
+.ticket-item {
+    display: block;
+    width:100%;
+    height:100px;
+    margin-left:auto;
+    margin-right: auto;
+    border:1px dashed #aaa;
+}
+.ticket-item > div {float:left;}
+.outline {
+    border: 1px solid #aaa;
+}
+.ticket-pic{
+    width:150px;
+    height:100px;
+    margin-right:15px;
+}
+.market-price{
+    text-decoration: line-through;
+    padding-left:10px;
+}
+.ticket-shop-location{
+    position:relative;
+    top:40px;
+}
+.brand-name{
+    background:#C0EFFF;
+    margin-bottom: 20px;
+}
+
+#shop-wrap{
+    margin-left: auto;
+    margin-right:auto;
+
+}
+.shop-pic{
+    width:90%;
+    margin-left:5%;
+
+}
+.info-item{
+    margin:8px auto;
+    border-bottom: 1px dashed #aaa;
+}
+.block-info{
+    margin-top:20px;
+}

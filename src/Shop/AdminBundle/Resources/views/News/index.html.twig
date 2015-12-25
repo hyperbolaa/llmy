@@ -1,0 +1,25 @@
+{% extends 'ShopAdminBundle::base_index.html.twig' %}
+
+{% set _bundle,_module,_current = '后台','新闻','列表' %}
+
+{% set thead = ['ID','名称','时间','操作'] %}
+
+
+{% block tbody %}
+    <td>{{ hyperbolaa_ueditor(entity.id) }}</td>
+    <td>{{ entity.name|hyperbolaa_ueditor() }}</td>
+    <td>{% if entity.createTime %}{{ entity.createTime|date('Y-m-d H:i:s') }}{% endif %}</td>
+    <td>
+        <ul class="op_icon" data-bundle="{{ bundle_name | default('') }}">
+            <li>
+                <a href="{{ path('admin_news_edit', { 'id': entity.id }) }}">
+                    <i class="fa fa-edit"></i> 编辑</a>
+            </li>
+            <li>
+                <a class="btn_del" href="javascript:void(0);" data-eid="{{ entity.id }}">
+                    <i class="fa fa-trash red"></i> 删除</a>
+            </li>
+        </ul>
+    </td>
+{% endblock %}
+

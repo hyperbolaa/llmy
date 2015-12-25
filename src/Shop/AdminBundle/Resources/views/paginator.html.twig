@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-sm-5">
+        <div class="dataTables_info" >{{ record_count|default(1) }}条记录, 共{{ page_count|default(1) }}页</div>
+    </div>
+    <div class="col-sm-7">
+        <div class="dataTables_paginate paging_simple_numbers">
+            <ul class="pagination">
+{#                <li class="paginate_button "><a href="#" >上一页</a></li>
+                <li class="paginate_button active"><a href="#" >1</a></li>
+                <li class="paginate_button "><a href="#"  >2</a></li>
+                <li class="paginate_button "><a href="#"  >3</a></li>
+                <li class="paginate_button "><a href="#"  >4</a></li>
+                <li class="paginate_button "><a href="#"  >5</a></li>
+                <li class="paginate_button "><a href="#"  >6</a></li>
+                <li class="paginate_button "><a href="#"  >下一页</a></li>#}
+                {{ page_str|raw }}
+            </ul>
+        </div>
+    </div>
+</div>

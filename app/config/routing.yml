@@ -1,0 +1,17 @@
+shop_index:
+    resource: "@ShopIndexBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+shop_admin:
+    resource: "@ShopAdminBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+bushidoio_qrcode:
+    resource: "@BushidoIOQRCodeBundle/Controller/"
+    type:     annotation
+
+hyperbolaa_ueditor:
+    resource: "@HyperbolaaUeditorBundle/Controller/"
+    type:     annotation

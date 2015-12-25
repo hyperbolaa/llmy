@@ -1,0 +1,93 @@
+/**
+* login page style
+* @author: wangXi
+*
+*/
+.login_wrap {
+    margin-left:auto;
+    margin-right:auto;
+    width:760px !important;
+    max-width:80%;
+    text-align:center;
+}
+.login_inner_box {
+    position:relative;
+    top:100px;
+    width:500px;
+    margin-left:auto;
+    margin-right:auto;
+    padding-top:10px;
+    padding-bottom:20px;
+    /*border:1px solid #ccc;*/
+    -webkit-box-shadow:0 0 1px 1px rgba(0,0,0,0.1);
+    -moz-box-shadow:0 0 1px 1px rgba(0,0,0,0.1);
+    box-shadow:0 0 1px 1px rgba(0,0,0,0.1);
+
+    -webkit-border-radius:8px 8px;
+    -moz-border-radius:8px 8px;
+    border-radius:8px 8px;
+}
+.login_title {
+    font-size:25px;
+    line-height:35px;
+    color:#777;
+    padding-bottom:20px;
+}
+.form-horizontal .control-group {
+    width:90%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:15px;
+    clear:both;
+}
+.form-horizontal .control-label {
+    width:100px;
+}
+.form-horizontal .controls {
+    width:320px;
+    margin-left:80px;
+    margin-top:-20px;
+    margin-bottom:10px;
+}
+
+.copyright {
+    display: block;
+    min-width:300px;
+    color:#777;
+    font-size:14px;
+    margin-left:-100px;
+    margin-right:auto;
+    position: fixed;
+    bottom:40px;
+    padding-left:50%;
+}
+#fm_login .controls> input {width:80%;height:30px;line-height:25px;}
+#fm_login .control-label {padding-top:5px;}
+.control-label, .controls {float:left;display: inline-block;margin-left:80px;margin-right:20px;}
+.clear {clear:both;}
+#btn_reset {margin-left:25px;}
+.login_notice {
+    width:80%;
+    clear:both;
+    padding-top:5px;
+    padding-bottom:5px;
+    color:#e77;
+    font-size:12px;
+}
+
+.wx-login-ctrl {width:60%;}
+.wx-chk-btn {width:60%;color: #082c2b;font-size:12px;}
+
+/*   ---------------->*/
+.wrapper {
+    background: #ededed !important;
+}
+.container {
+    margin-top:50px;
+}
+.content-wrapper {
+    margin-left:0;
+}
+.content-wrapper .content {
+    margin-top:0;
+}

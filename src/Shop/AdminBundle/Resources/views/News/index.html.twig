@@ -6,8 +6,8 @@
 
 
 {% block tbody %}
-    <td>{{ hyperbolaa_ueditor(entity.id) }}</td>
-    <td>{{ entity.name|hyperbolaa_ueditor() }}</td>
+    <td>{{ entity.id }}</td>
+    <td>{{ entity.name }}</td>
     <td>{% if entity.createTime %}{{ entity.createTime|date('Y-m-d H:i:s') }}{% endif %}</td>
     <td>
         <ul class="op_icon" data-bundle="{{ bundle_name | default('') }}">

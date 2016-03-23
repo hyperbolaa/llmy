@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Shop\AdminBundle\Entity\News;
 use Shop\AdminBundle\Form\NewsType;
-use Hyperbolaa\UeditorBundle\Service\UeditorService;
 
 
 /**
@@ -30,15 +29,14 @@ class NewsController extends Controller
      */
     public function indexAction()
     {
-        //return $this->make();
+        return $this->make();
 
-        $return = UeditorService::getName();
-        dump($return);exit;
+        //$return = ImageService::getName();
+        //dump($return);exit;
 
-
-        $return = $this->get("hyperbolaa_ueditor")->getAuthor();
-        dump($return);exit;
-        return new Response($return);
+        //$return = $this->get("hyperbolaa_sms")->send('code',13545018901,"448923");
+        //dump($return);exit;
+        //return new Response($return);
     }
 
 
@@ -78,9 +76,13 @@ class NewsController extends Controller
             'action' => $this->generateUrl('admin_news_create'),
             'method' => 'POST',
         ));
-
         $form->handleRequest($request);
         if ($form->isValid()) {
+
+            $name = $entity->getName();
+            $fileName = $this->get("hyperbolaa_image")->resizeUpload($name);
+            $entity->setName($fileName);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
@@ -133,21 +135,33 @@ class NewsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('ShopAdminBundle:News')->find($id);
-
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find News entity.');
         }
-
 
         $editForm = $this->createForm(new NewsType(), $entity, array(
             'action' => $this->generateUrl('admin_news_update', array('id' => $entity->getId())),
             'method' => 'POST',
         ));
 
-        $originTime = $entity->getCreateTime();
+        $formName   = $editForm->getName();
+        $fileBag    = $request->files->get($formName);
+        if(!isset($fileBag['name'])){
+            $originName = $entity->getName();
+        }
 
+        $originTime = $entity->getCreateTime();
         $editForm->handleRequest($request);
         if ($editForm->isValid()) {
+
+            //图片处理
+            if(isset($originName)){
+                $entity->setName($originName);
+            }else{
+                $name = $entity->getName();
+                $path = $this->get('hyperbolaa_image')->normalUpload($name);
+                $entity->setName($path);
+            }
 
             $entity->setCreateTime($originTime);
             $em->persist($entity);
@@ -193,7 +207,7 @@ class NewsController extends Controller
      * @param int $perPage
      * @return array
      */
-    private function make($perPage=1){
+    private function make($perPage=10){
         $request = Request::createFromGlobals();
         $page    = $request->query->get('page');
         $page    = max($page, 1);
@@ -202,6 +216,7 @@ class NewsController extends Controller
         $entities     = $repository->getList($page,$perPage);
         $record_count = $repository->getCount();
         $pageArr      = $this->get('paginator')->make($record_count,$perPage);
+
 
         return array(
             'entities'      => $entities,

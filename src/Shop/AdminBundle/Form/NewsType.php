@@ -16,6 +16,7 @@ class NewsType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('description')
             ->add('createTime')
             ->add('isDelete')
         ;

@@ -53,7 +53,7 @@ class Paginator extends Controller
         $this->now_page         = max($page, 1);
         $this->now_page         = ($this->now_page < $this->total_pages) ? $this->now_page : $this->total_pages;
 
-        $page_str = $this->makestr();
+        $page_str = $this->make_str();
 
         return array(
             'page_count'   => $this->total_pages,
@@ -66,7 +66,7 @@ class Paginator extends Controller
      * 得到第一页
      * @return string
      */
-    public function first_page($name = '首页')
+    private function first_page($name = '首页')
     {
 
         return $this->_get_link('1', $name);
@@ -79,7 +79,7 @@ class Paginator extends Controller
      * @param $name
      * @return string
      */
-    public function last_page($name = '末页')
+    private function last_page($name = '末页')
     {
 
         return $this->_get_link($this->total_pages, $name);
@@ -90,7 +90,7 @@ class Paginator extends Controller
      * @param string $name
      * @return string
      */
-    public function up_page($name = '上一页')
+    private function up_page($name = '上一页')
     {
         if($this->now_page > 1)
         {
@@ -104,7 +104,7 @@ class Paginator extends Controller
      * @param string $name
      * @return string
      */
-    public function down_page($name = '下一页')
+    private function down_page($name = '下一页')
     {
         if($this->now_page < $this->total_pages)
         {
@@ -116,7 +116,7 @@ class Paginator extends Controller
     /**
      * 设置当前页面链接
      */
-    protected function _set_url()
+    private function _set_url()
     {
         $url = "";
         if(isset($this->parameter)) {
@@ -136,7 +136,7 @@ class Paginator extends Controller
      * @param $page 页面
      * @return string
      */
-    protected function _get_link($page,$text)
+    private function _get_link($page,$text)
     {
         if($this->url === NULL)
         {
@@ -151,7 +151,7 @@ class Paginator extends Controller
      * 展示分页
      * @return string
      */
-    public function makestr()
+    private function make_str()
     {
         $plus = $this->plus;
         if( ($plus + $this->now_page) > $this->total_pages){

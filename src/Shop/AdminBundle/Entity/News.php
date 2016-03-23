@@ -14,21 +14,29 @@ class News
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+
+
+    /**
      * @var \DateTime
      *
-     * @ORM\Column(name="create_time", type="datetime", nullable=false)
+     * @ORM\Column(name="create_time", type="datetime", nullable=true)
      */
     private $createTime;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="is_delete", type="smallint", nullable=true)
+     * @ORM\Column(name="is_delete", type="boolean", nullable=true)
      */
     private $isDelete;
 
@@ -132,5 +140,29 @@ class News
         if($this->getCreateTime() == null){
             $this->setCreateTime(new \DateTime('now'));
         }
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return News
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

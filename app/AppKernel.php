@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new BushidoIO\QRCodeBundle\BushidoIOQRCodeBundle(),
             new Hyperbolaa\UeditorBundle\HyperbolaaUeditorBundle(),
+            new Hyperbolaa\SymfonyBundle\HyperbolaaSymfonyBundle(),
             new Shop\AdminBundle\ShopAdminBundle(),
             new Shop\IndexBundle\ShopIndexBundle(),
         );
